@@ -79,7 +79,7 @@ resources:
     UsersTableProd:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ${self:custom.tablePrefix}-prod
+        TableName: ${self:custom.tablePrefix}-prod-${opt:stage, 'prod'}
         AttributeDefinitions:
           - AttributeName: userId
             AttributeType: S
