@@ -145,7 +145,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743166710012-2025-03-28T12:58:30.012Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743168886151-2025-03-28T13:34:46.151Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -430,7 +430,7 @@
     "layers": {}
   },
   "package": {
-    "artifactDirectoryName": "serverless/coffeeshop-serverless/dev/1743166710012-2025-03-28T12:58:30.012Z",
+    "artifactDirectoryName": "serverless/coffeeshop-serverless/dev/1743168886151-2025-03-28T13:34:46.151Z",
     "artifact": "coffeeshop-serverless.zip"
   }
 }

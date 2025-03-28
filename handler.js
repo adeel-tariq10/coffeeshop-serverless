@@ -14,14 +14,6 @@ const serverless = require("serverless-http");
 const app = express();
 
 const USERS_TABLE = process.env.USERS_TABLE;
-console.log('Environment variables:', {
-  USERS_TABLE,
-  IS_OFFLINE: process.env.IS_OFFLINE,
-  AWS_REGION: process.env.AWS_REGION,
-  AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
-  AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY
-});
-
 const client = new DynamoDBClient();
 const docClient = DynamoDBDocumentClient.from(client);
 
@@ -47,7 +39,6 @@ app.get("/users/:userId", async (req, res) => {
         .json({ error: 'Could not find user with provided "userId"' });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: "Could not retrieve user" });
   }
 });
@@ -70,7 +61,6 @@ app.post("/users", async (req, res) => {
     await docClient.send(command);
     res.json({ userId, name });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: "Could not create user" });
   }
 });
