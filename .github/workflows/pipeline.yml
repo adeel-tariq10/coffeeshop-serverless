@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - dev
+      - prod
 
 jobs:
-  deploy:
+  lint:
     runs-on: ubuntu-latest
-
     steps:
       # Step 1: Checkout the code
       - name: Checkout Code
@@ -28,11 +28,29 @@ jobs:
       - name: Lint JavaScript Files
         run: npm run lint
 
-      # Step 5: Install Serverless Framework
+  deploy:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # Step 3: Install Dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Step 4: Install Serverless Framework
       - name: Install Serverless Framework
         run: npm install -g serverless
 
-      # Step 6: Configure AWS Profile
+      # Step 5: Configure AWS Profile
       - name: Configure AWS Profile
         run: |
           mkdir -p ~/.aws
@@ -42,9 +60,14 @@ jobs:
         env:
           AWS_PROFILE: serverless
 
-      # Step 7: Deploy to Serverless (dev stage)
-      - name: Deploy to Serverless (dev stage)
+      # Step 6: Deploy to Serverless
+      - name: Deploy to Serverless
         env:
           AWS_PROFILE: serverless
           SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
-        run: serverless deploy --stage dev
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/prod" ]; then
+            serverless deploy --stage prod
+          else
+            serverless deploy --stage dev
+          fi
