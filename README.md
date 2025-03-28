@@ -17,6 +17,7 @@ A serverless implementation of a Coffeeshop application using the Serverless Fra
 - [Features](#features)
 - [Contributing](#contributing)
 - [License](#license)
+- [Linting JavaScript Files](#linting-javascript-files)
 
 ## Prerequisites
 
@@ -140,6 +141,7 @@ Follow these steps to install the Serverless Framework:
 - **Request Body**:
   ```json
   {
+    "userId": "uniqueUserId",
     "name": "Updated User Name"
   }
   ```
@@ -217,6 +219,74 @@ Contributions are welcome! Please follow these steps:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Linting JavaScript Files
+
+To ensure code quality, we use ESLint for linting JavaScript files. Follow the steps below to lint the code locally:
+
+1. **Install ESLint** (if not already installed):
+   ```bash
+   npm install eslint --save-dev
+   ```
+
+2. **Install ESLint Define Config**:
+   You also need to install the `eslint-define-config` package:
+   ```bash
+   npm install eslint-define-config --save-dev
+   ```
+
+3. **Set Up Package.json**:
+   Ensure your `package.json` includes the following line to enable ES module syntax:
+   ```json
+   {
+     "type": "module",
+     // ... other fields ...
+   }
+   ```
+
+4. **Create or Update ESLint Configuration**:
+   Create or update the file named `eslint.config.js` in the root of your project with the following content:
+   ```javascript
+   import { defineConfig } from 'eslint-define-config';
+
+   export default defineConfig([
+     {
+       languageOptions: {
+         globals: {
+           window: 'readonly',
+           document: 'readonly',
+           // Add other globals as needed
+         },
+         parserOptions: {
+           ecmaVersion: 2021,
+           sourceType: 'module',
+         },
+       },
+       rules: {
+         'no-console': 'warn',
+         'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+         'eqeqeq': 'error',
+         'semi': ['error', 'always'],
+         'quotes': ['error', 'single'],
+         // Add other custom rules as needed
+       },
+     },
+   ]);
+   ```
+
+5. **Run ESLint**:
+   To lint all JavaScript files in the project, run:
+   ```bash
+   npx eslint . --ext .js,.jsx
+   ```
+
+6. **Fix Issues**:
+   You can also automatically fix some issues by running:
+   ```bash
+   npx eslint . --ext .js,.jsx --fix
+   ```
+
+Make sure to check the ESLint configuration file for any specific rules or settings used in this project.
 
 
 <!--

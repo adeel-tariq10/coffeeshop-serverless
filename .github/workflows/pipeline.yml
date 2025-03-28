@@ -24,11 +24,15 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # Step 4: Install Serverless Framework
+      # Step 4: Lint JavaScript Files
+      - name: Lint JavaScript Files
+        run: npm run lint
+
+      # Step 5: Install Serverless Framework
       - name: Install Serverless Framework
         run: npm install -g serverless
 
-      # Step 5: Configure AWS Profile
+      # Step 6: Configure AWS Profile
       - name: Configure AWS Profile
         run: |
           mkdir -p ~/.aws
@@ -38,7 +42,7 @@ jobs:
         env:
           AWS_PROFILE: serverless
 
-      # Step 6: Deploy to Serverless (dev stage)
+      # Step 7: Deploy to Serverless (dev stage)
       - name: Deploy to Serverless (dev stage)
         env:
           AWS_PROFILE: serverless

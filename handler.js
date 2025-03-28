@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
+const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
 
 const {
   DynamoDBDocumentClient,
@@ -8,10 +8,10 @@ const {
   PutCommand,
   UpdateCommand,
   DeleteCommand,
-} = require("@aws-sdk/lib-dynamodb");
+} = require('@aws-sdk/lib-dynamodb');
 
-const express = require("express");
-const serverless = require("serverless-http");
+const express = require('express');
+const serverless = require('serverless-http');
 
 const app = express();
 
@@ -21,7 +21,7 @@ const docClient = DynamoDBDocumentClient.from(client);
 
 app.use(express.json());
 
-app.get("/users/:userId", async (req, res) => {
+app.get('/users/:userId', async (req, res) => {
   const params = {
     TableName: USERS_TABLE,
     Key: {
@@ -41,15 +41,15 @@ app.get("/users/:userId", async (req, res) => {
         .json({ error: 'Could not find user with provided "userId"' });
     }
   } catch (error) {
-    res.status(500).json({ error: "Could not retrieve user" });
+    res.status(500).json({ error: 'Could not retrieve user' });
   }
 });
 
-app.post("/users", async (req, res) => {
+app.post('/users', async (req, res) => {
   const { userId, name } = req.body;
-  if (typeof userId !== "string") {
+  if (typeof userId !== 'string') {
     res.status(400).json({ error: '"userId" must be a string' });
-  } else if (typeof name !== "string") {
+  } else if (typeof name !== 'string') {
     res.status(400).json({ error: '"name" must be a string' });
   }
 
@@ -63,13 +63,13 @@ app.post("/users", async (req, res) => {
     await docClient.send(command);
     res.json({ userId, name });
   } catch (error) {
-    res.status(500).json({ error: "Could not create user" });
+    res.status(500).json({ error: 'Could not create user' });
   }
 });
 
 app.use((req, res, next) => {
   return res.status(404).json({
-    error: "Not Found",
+    error: 'Not Found',
   });
 });
 
@@ -84,7 +84,7 @@ module.exports.createUser = async (event) => {
   
   const { Item } = await docClient.send(new GetCommand(getParams));
   if (Item) {
-    return { statusCode: 409, body: JSON.stringify({ error: "User already exists" }) }; 
+    return { statusCode: 409, body: JSON.stringify({ error: 'User already exists' }) }; 
   }
 
   const params = {
@@ -115,7 +115,7 @@ module.exports.getUser = async (event) => {
       }),
     };
   } else {
-    return { statusCode: 404, body: JSON.stringify({ error: "User not found" }) };
+    return { statusCode: 404, body: JSON.stringify({ error: 'User not found' }) };
   }
 };
 
@@ -130,18 +130,18 @@ module.exports.updateUser = async (event) => {
   
   const { Item } = await docClient.send(new GetCommand(getParams));
   if (!Item) {
-    return { statusCode: 404, body: JSON.stringify({ error: "User not found" }) }; 
+    return { statusCode: 404, body: JSON.stringify({ error: 'User not found' }) }; 
   }
 
   const params = {
     TableName: process.env.USERS_TABLE,
     Key: { userId },
-    UpdateExpression: "set #name = :name", 
+    UpdateExpression: 'set #name = :name', 
     ExpressionAttributeNames: {
-      "#name": "name", 
+      '#name': 'name', 
     },
     ExpressionAttributeValues: {
-      ":name": name,
+      ':name': name,
     },
   };
   await docClient.send(new UpdateCommand(params));
@@ -158,7 +158,7 @@ module.exports.deleteUser = async (event) => {
   
   const { Item } = await docClient.send(new GetCommand(getParams));
   if (!Item) {
-    return { statusCode: 404, body: JSON.stringify({ error: "User not found" }) }; 
+    return { statusCode: 404, body: JSON.stringify({ error: 'User not found' }) }; 
   }
 
   const params = {
