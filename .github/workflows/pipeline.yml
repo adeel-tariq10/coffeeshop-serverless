@@ -1,1 +1,44 @@
 
+name: Dev & Prod Serverless Deployment
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # Step 3: Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Step 4: Configure AWS Credentials
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      # Step 5: Determine Deployment Stage
+      - name: Set Stage
+        id: set-stage
+        run: echo "STAGE=$(if [ '${{ github.ref_name }}' == 'main' ]; then echo prod; else echo dev; fi)" >> $GITHUB_ENV
+
+      # Step 6: Deploy to Serverless
+      - name: Deploy to Serverless (${STAGE})
+        run: serverless deploy --stage ${{ env.STAGE }}
