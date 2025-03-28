@@ -1,136 +1,90 @@
-# Coffeeshop Serverless
+<!--
+title: 'Serverless Framework Node Express API service backed by DynamoDB on AWS'
+description: 'This template demonstrates how to develop and deploy a simple Node Express API service backed by DynamoDB running on AWS Lambda using the Serverless Framework.'
+layout: Doc
+framework: v4
+platform: AWS
+language: nodeJS
+priority: 1
+authorLink: 'https://github.com/serverless'
+authorName: 'Serverless, Inc.'
+authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
+-->
 
-A serverless implementation of a Coffeeshop application using the Serverless Framework.
+# Serverless Framework Node Express API on AWS
 
-## Prerequisites
+This template demonstrates how to develop and deploy a simple Node Express API service, backed by DynamoDB table, running on AWS Lambda using the Serverless Framework.
 
-- Node.js runtime installed
-- AWS account with appropriate permissions
-- AWS CLI configured (optional)
+This template configures a single function, `api`, which is responsible for handling all incoming requests using the `httpApi` event. To learn more about `httpApi` event configuration options, please refer to [httpApi event docs](https://www.serverless.com/framework/docs/providers/aws/events/http-api/). As the event is configured in a way to accept all incoming requests, the Express.js framework is responsible for routing and handling requests internally. This implementation uses the `serverless-http` package to transform the incoming event request payloads to payloads compatible with Express.js. To learn more about `serverless-http`, please refer to the [serverless-http README](https://github.com/dougmoscrop/serverless-http).
 
-## Installation
+Additionally, it also handles provisioning of a DynamoDB database that is used for storing data about users. The Express.js application exposes two endpoints, `POST /users` and `GET /user/:userId`, which create and retrieve a user record.
 
-1. Install Serverless Framework globally:
-```bash
-npm install -g serverless
+## Usage
+
+### Deployment
+
+Install dependencies with:
+
 ```
-
-2. Verify installation:
-```bash
-serverless --version
-```
-
-3. Update Serverless Framework (if needed):
-```bash
-serverless update
-```
-
-## Project Setup
-
-1. Create new project:
-```bash
-serverless create --template aws-nodejs-typescript --path coffeeshop-serverless
-cd coffeeshop-serverless
-```
-
-2. Install dependencies:
-```bash
 npm install
 ```
 
-3. Configure AWS credentials:
-```bash
-serverless config credentials --provider aws --key YOUR_ACCESS_KEY --secret YOUR_SECRET_KEY
+and then deploy with:
+
 ```
-
-## Development
-
-1. Start development mode:
-```bash
-serverless dev
-```
-
-2. Deploy to AWS:
-```bash
 serverless deploy
 ```
 
-3. Deploy individual function:
-```bash
-serverless deploy function -f functionName
-```
-
-4. View logs:
-```bash
-serverless logs -f functionName -t
-```
-
-## Project Structure
+After running deploy, you should see output similar to:
 
 ```
-coffeeshop-serverless/
-├── src/
-│   ├── handlers/     # Lambda functions
-│   ├── models/       # Data models
-│   └── services/     # Business logic
-├── serverless.yml    # Serverless config
-└── package.json      # Dependencies
+Deploying "aws-node-express-dynamodb-api" to stage "dev" (us-east-1)
+
+✔ Service deployed to stack aws-node-express-dynamodb-api-dev (109s)
+
+endpoint: ANY - https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com
+functions:
+  api: aws-node-express-dynamodb-api-dev-api (3.8 MB)
 ```
 
-## Useful Commands
+_Note_: In current form, after deployment, your API is public and can be invoked by anyone. For production deployments, you might want to configure an authorizer. For details on how to do that, refer to [`httpApi` event docs](https://www.serverless.com/framework/docs/providers/aws/events/http-api/). Additionally, in current configuration, the DynamoDB table will be removed when running `serverless remove`. To retain the DynamoDB table even after removal of the stack, add `DeletionPolicy: Retain` to its resource definition.
 
-- `serverless` - Interactive setup workflow
-- `serverless deploy` - Deploy entire service
-- `serverless dev` - Start development mode
-- `serverless invoke -f functionName` - Invoke function
-- `serverless logs -f functionName -t` - Stream logs
-- `serverless remove` - Remove service and resources
+### Invocation
 
-## Resources
+After successful deployment, you can create a new user by calling the corresponding endpoint:
 
-- [Serverless Framework Documentation](https://www.serverless.com/framework/docs)
-- [AWS Lambda Documentation](https://docs.aws.amazon.com/lambda/)
-- [Serverless Guru Code Challenge](https://github.com/serverless-guru/code-challenges)
+```
+curl --request POST 'https://xxxxxx.execute-api.us-east-1.amazonaws.com/users' --header 'Content-Type: application/json' --data-raw '{"name": "John", "userId": "someUserId"}'
+```
 
-## User Management
+Which should result in the following response:
 
-### Authentication
-- User registration
-- Login/Logout functionality
-- JWT token management
-- Password reset
+```json
+{ "userId": "someUserId", "name": "John" }
+```
 
-### User Profile
-- Create user profile
-- View profile details
-- Update profile information
-- Delete account
+You can later retrieve the user by `userId` by calling the following endpoint:
 
-### User Preferences
-- Save favorite orders
-- Set delivery preferences
-- Manage notification settings
-- Store payment methods
+```
+curl https://xxxxxxx.execute-api.us-east-1.amazonaws.com/users/someUserId
+```
 
-### Order History
-- View past orders
-- Track current orders
-- Save favorite orders
-- Rate and review orders
+Which should result in the following response:
 
-## Tech Stack
+```json
+{ "userId": "someUserId", "name": "John" }
+```
 
-- Serverless Framework
-- AWS Lambda
-- AWS DynamoDB
-- Node.js
-- TypeScript
-- AWS Cognito (Authentication)
+### Local development
 
-## Features
+The easiest way to develop and test your function is to use the `dev` command:
 
-- User authentication and authorization
-- Profile management
-- Order history tracking
-- Preferences management
-- Secure data storage
+```
+serverless dev
+```
+
+This will start a local emulator of AWS Lambda and tunnel your requests to and from AWS Lambda, allowing you to interact with your function as if it were running in the cloud.
+
+Now you can invoke the function as before, but this time the function will be executed locally. Now you can develop your function locally, invoke it, and see the results immediately without having to re-deploy.
+
+When you are done developing, don't forget to run `serverless deploy` to deploy the function to the cloud.
