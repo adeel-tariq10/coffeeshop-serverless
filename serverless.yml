@@ -32,20 +32,6 @@ provider:
 
 custom:
   tablePrefix: UsersTable
-  
-  iam:
-    role:
-      statements:
-        - Effect: Allow
-          Action:
-            - dynamodb:Query
-            - dynamodb:Scan
-            - dynamodb:GetItem
-            - dynamodb:PutItem
-            - dynamodb:UpdateItem
-            - dynamodb:DeleteItem
-          Resource: 
-            - Fn::GetAtt: [UsersTable, Arn]
 
 functions:
   createUser:

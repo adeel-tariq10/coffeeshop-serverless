@@ -76,7 +76,7 @@ app.use((req, res, next) => {
 module.exports.createUser = async (event) => {
   const { userId, name } = JSON.parse(event.body);
   
-  // Check if user already exists
+  
   const getParams = {
     TableName: process.env.USERS_TABLE,
     Key: { userId },
@@ -84,14 +84,14 @@ module.exports.createUser = async (event) => {
   
   const { Item } = await docClient.send(new GetCommand(getParams));
   if (Item) {
-    return { statusCode: 409, body: JSON.stringify({ error: "User already exists" }) }; // Conflict
+    return { statusCode: 409, body: JSON.stringify({ error: "User already exists" }) }; 
   }
 
   const params = {
     TableName: process.env.USERS_TABLE,
     Item: {
       userId,
-      "#name": name, // Use placeholder
+      name,
     },
   };
   await docClient.send(new PutCommand(params));
@@ -105,14 +105,24 @@ module.exports.getUser = async (event) => {
     Key: { userId },
   };
   const { Item } = await docClient.send(new GetCommand(params));
-  return Item ? { statusCode: 200, body: JSON.stringify(Item) } : { statusCode: 404, body: JSON.stringify({ error: "User not found" }) };
+  
+  if (Item) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        userId: Item.userId,
+        name: Item.name,
+      }),
+    };
+  } else {
+    return { statusCode: 404, body: JSON.stringify({ error: "User not found" }) };
+  }
 };
 
 module.exports.updateUser = async (event) => {
   const { userId } = event.pathParameters;
   const { name } = JSON.parse(event.body);
   
-  // Check if user exists
   const getParams = {
     TableName: process.env.USERS_TABLE,
     Key: { userId },
@@ -120,15 +130,15 @@ module.exports.updateUser = async (event) => {
   
   const { Item } = await docClient.send(new GetCommand(getParams));
   if (!Item) {
-    return { statusCode: 404, body: JSON.stringify({ error: "User not found" }) }; // Not Found
+    return { statusCode: 404, body: JSON.stringify({ error: "User not found" }) }; 
   }
 
   const params = {
     TableName: process.env.USERS_TABLE,
     Key: { userId },
-    UpdateExpression: "set #name = :name", // Use #name as a placeholder
+    UpdateExpression: "set #name = :name", 
     ExpressionAttributeNames: {
-      "#name": "name", // Map #name to the actual attribute name
+      "#name": "name", 
     },
     ExpressionAttributeValues: {
       ":name": name,
@@ -141,7 +151,6 @@ module.exports.updateUser = async (event) => {
 module.exports.deleteUser = async (event) => {
   const { userId } = event.pathParameters;
   
-  // Check if user exists
   const getParams = {
     TableName: process.env.USERS_TABLE,
     Key: { userId },
@@ -149,7 +158,7 @@ module.exports.deleteUser = async (event) => {
   
   const { Item } = await docClient.send(new GetCommand(getParams));
   if (!Item) {
-    return { statusCode: 404, body: JSON.stringify({ error: "User not found" }) }; // Not Found
+    return { statusCode: 404, body: JSON.stringify({ error: "User not found" }) }; 
   }
 
   const params = {
@@ -157,7 +166,7 @@ module.exports.deleteUser = async (event) => {
     Key: { userId },
   };
   await docClient.send(new DeleteCommand(params));
-  return { statusCode: 204 }; // No Content
+  return { statusCode: 204 }; 
 };
 
 exports.handler = serverless(app);

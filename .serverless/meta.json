@@ -201,7 +201,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                  "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
+                  "S3Key": "serverless/coffeeshop-serverless/dev/1743182749398-2025-03-28T17:25:49.398Z/coffeeshop-serverless.zip"
                 },
                 "Handler": "index.handler",
                 "Runtime": "nodejs20.x",
@@ -233,7 +233,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                  "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
+                  "S3Key": "serverless/coffeeshop-serverless/dev/1743182749398-2025-03-28T17:25:49.398Z/coffeeshop-serverless.zip"
                 },
                 "Handler": "index.handler",
                 "Runtime": "nodejs20.x",
@@ -265,7 +265,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                  "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
+                  "S3Key": "serverless/coffeeshop-serverless/dev/1743182749398-2025-03-28T17:25:49.398Z/coffeeshop-serverless.zip"
                 },
                 "Handler": "index.handler",
                 "Runtime": "nodejs20.x",
@@ -297,7 +297,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                  "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
+                  "S3Key": "serverless/coffeeshop-serverless/dev/1743182749398-2025-03-28T17:25:49.398Z/coffeeshop-serverless.zip"
                 },
                 "Handler": "index.handler",
                 "Runtime": "nodejs20.x",
@@ -587,7 +587,7 @@
                 "DeleteUserLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1743178386998": {
+            "ApiGatewayDeployment1743182737288": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -863,32 +863,7 @@
         "vpc": {}
       },
       "custom": {
-        "tablePrefix": "UsersTable",
-        "iam": {
-          "role": {
-            "statements": [
-              {
-                "Effect": "Allow",
-                "Action": [
-                  "dynamodb:Query",
-                  "dynamodb:Scan",
-                  "dynamodb:GetItem",
-                  "dynamodb:PutItem",
-                  "dynamodb:UpdateItem",
-                  "dynamodb:DeleteItem"
-                ],
-                "Resource": [
-                  {
-                    "Fn::GetAtt": [
-                      "UsersTable",
-                      "Arn"
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        }
+        "tablePrefix": "UsersTable"
       },
       "functions": {
         "createUser": {
@@ -1235,7 +1210,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743182749398-2025-03-28T17:25:49.398Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -1267,7 +1242,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743182749398-2025-03-28T17:25:49.398Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -1299,7 +1274,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743182749398-2025-03-28T17:25:49.398Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -1331,7 +1306,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743182749398-2025-03-28T17:25:49.398Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -1621,7 +1596,7 @@
               "DeleteUserLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1743178386998": {
+          "ApiGatewayDeployment1743182737288": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1908,7 +1883,7 @@
       "serviceProvider": null,
       "instanceParameters": null
     },
-    "serviceRawFile": "# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: adeeltariqkhan\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: coffeeshop-serverless\n# \"service\" is the name of this project. This will also be added to your AWS resource names.\nservice: coffeeshop-serverless\n\n\nstages:\n  default:\n    params:\n      tableName: \"users-table-${sls:stage}\"\n\nprovider:\n  name: aws\n  runtime: nodejs20.x\n  profile: serverless\n  environment:\n    USERS_TABLE: ${self:custom.tablePrefix}-${opt:stage, 'dev'}  # Use a default stage if not provided\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - dynamodb:PutItem\n            - dynamodb:GetItem\n            - dynamodb:UpdateItem\n            - dynamodb:DeleteItem\n          Resource: \n            - Fn::GetAtt: [UsersTableDev, Arn]  # For development\n            - Fn::GetAtt: [UsersTableProd, Arn] # For production\n\ncustom:\n  tablePrefix: UsersTable\n  \n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - dynamodb:Query\n            - dynamodb:Scan\n            - dynamodb:GetItem\n            - dynamodb:PutItem\n            - dynamodb:UpdateItem\n            - dynamodb:DeleteItem\n          Resource: \n            - Fn::GetAtt: [UsersTable, Arn]\n\nfunctions:\n  createUser:\n    handler: handler.createUser\n    events:\n      - http:\n          path: users\n          method: post\n\n  getUser:\n    handler: handler.getUser\n    events:\n      - http:\n          path: users/{userId}\n          method: get\n\n  updateUser:\n    handler: handler.updateUser\n    events:\n      - http:\n          path: users/{userId}\n          method: put\n\n  deleteUser:\n    handler: handler.deleteUser\n    events:\n      - http:\n          path: users/{userId}\n          method: delete\n\nresources:\n  Resources:\n    UsersTableDev:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        TableName: ${self:custom.tablePrefix}-dev\n        AttributeDefinitions:\n          - AttributeName: userId\n            AttributeType: S\n        KeySchema:\n          - AttributeName: userId\n            KeyType: HASH\n        BillingMode: PAY_PER_REQUEST\n\n    UsersTableProd:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        TableName: ${self:custom.tablePrefix}-prod\n        AttributeDefinitions:\n          - AttributeName: userId\n            AttributeType: S\n        KeySchema:\n          - AttributeName: userId\n            KeyType: HASH\n        BillingMode: PAY_PER_REQUEST\n",
+    "serviceRawFile": "# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: adeeltariqkhan\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: coffeeshop-serverless\n# \"service\" is the name of this project. This will also be added to your AWS resource names.\nservice: coffeeshop-serverless\n\n\nstages:\n  default:\n    params:\n      tableName: \"users-table-${sls:stage}\"\n\nprovider:\n  name: aws\n  runtime: nodejs20.x\n  profile: serverless\n  environment:\n    USERS_TABLE: ${self:custom.tablePrefix}-${opt:stage, 'dev'}  # Use a default stage if not provided\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - dynamodb:PutItem\n            - dynamodb:GetItem\n            - dynamodb:UpdateItem\n            - dynamodb:DeleteItem\n          Resource: \n            - Fn::GetAtt: [UsersTableDev, Arn]  # For development\n            - Fn::GetAtt: [UsersTableProd, Arn] # For production\n\ncustom:\n  tablePrefix: UsersTable\n\nfunctions:\n  createUser:\n    handler: handler.createUser\n    events:\n      - http:\n          path: users\n          method: post\n\n  getUser:\n    handler: handler.getUser\n    events:\n      - http:\n          path: users/{userId}\n          method: get\n\n  updateUser:\n    handler: handler.updateUser\n    events:\n      - http:\n          path: users/{userId}\n          method: put\n\n  deleteUser:\n    handler: handler.deleteUser\n    events:\n      - http:\n          path: users/{userId}\n          method: delete\n\nresources:\n  Resources:\n    UsersTableDev:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        TableName: ${self:custom.tablePrefix}-dev\n        AttributeDefinitions:\n          - AttributeName: userId\n            AttributeType: S\n        KeySchema:\n          - AttributeName: userId\n            KeyType: HASH\n        BillingMode: PAY_PER_REQUEST\n\n    UsersTableProd:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        TableName: ${self:custom.tablePrefix}-prod\n        AttributeDefinitions:\n          - AttributeName: userId\n            AttributeType: S\n        KeySchema:\n          - AttributeName: userId\n            KeyType: HASH\n        BillingMode: PAY_PER_REQUEST\n",
     "command": [
       "dev"
     ],
@@ -1921,30 +1896,30 @@
     "serviceProviderAwsCfStackName": "coffeeshop-serverless-dev",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:164725230331:stack/coffeeshop-serverless-dev/22162110-0be4-11f0-a567-0affe8f069a7",
     "serviceProviderAwsCfStackCreated": "2025-03-28T14:51:30.203Z",
-    "serviceProviderAwsCfStackUpdated": "2025-03-28T16:05:50.780Z",
+    "serviceProviderAwsCfStackUpdated": "2025-03-28T17:14:38.812Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "DeleteUserLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-deleteUser:7",
+        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-deleteUser:10",
         "Description": "Current Lambda function version",
         "ExportName": "sls-coffeeshop-serverless-dev-DeleteUserLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "UpdateUserLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-updateUser:7",
+        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-updateUser:10",
         "Description": "Current Lambda function version",
         "ExportName": "sls-coffeeshop-serverless-dev-UpdateUserLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "CreateUserLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-createUser:7",
+        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-createUser:10",
         "Description": "Current Lambda function version",
         "ExportName": "sls-coffeeshop-serverless-dev-CreateUserLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "GetUserLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-getUser:7",
+        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-getUser:10",
         "Description": "Current Lambda function version",
         "ExportName": "sls-coffeeshop-serverless-dev-GetUserLambdaFunctionQualifiedArn"
       },
@@ -2101,7 +2076,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-              "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
+              "S3Key": "serverless/coffeeshop-serverless/dev/1743182749398-2025-03-28T17:25:49.398Z/coffeeshop-serverless.zip"
             },
             "Handler": "index.handler",
             "Runtime": "nodejs20.x",
@@ -2133,7 +2108,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-              "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
+              "S3Key": "serverless/coffeeshop-serverless/dev/1743182749398-2025-03-28T17:25:49.398Z/coffeeshop-serverless.zip"
             },
             "Handler": "index.handler",
             "Runtime": "nodejs20.x",
@@ -2165,7 +2140,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-              "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
+              "S3Key": "serverless/coffeeshop-serverless/dev/1743182749398-2025-03-28T17:25:49.398Z/coffeeshop-serverless.zip"
             },
             "Handler": "index.handler",
             "Runtime": "nodejs20.x",
@@ -2197,7 +2172,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-              "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
+              "S3Key": "serverless/coffeeshop-serverless/dev/1743182749398-2025-03-28T17:25:49.398Z/coffeeshop-serverless.zip"
             },
             "Handler": "index.handler",
             "Runtime": "nodejs20.x",
@@ -2487,7 +2462,7 @@
             "DeleteUserLambdaPermissionApiGateway"
           ]
         },
-        "ApiGatewayDeployment1743178386998": {
+        "ApiGatewayDeployment1743182737288": {
           "Type": "AWS::ApiGateway::Deployment",
           "Properties": {
             "RestApiId": {
