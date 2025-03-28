@@ -89,7 +89,10 @@ module.exports.createUser = async (event) => {
 
   const params = {
     TableName: process.env.USERS_TABLE,
-    Item: { userId, name },
+    Item: {
+      userId,
+      "#name": name, // Use placeholder
+    },
   };
   await docClient.send(new PutCommand(params));
   return { statusCode: 201, body: JSON.stringify({ userId, name }) };
@@ -123,7 +126,10 @@ module.exports.updateUser = async (event) => {
   const params = {
     TableName: process.env.USERS_TABLE,
     Key: { userId },
-    UpdateExpression: "set name = :name",
+    UpdateExpression: "set #name = :name", // Use #name as a placeholder
+    ExpressionAttributeNames: {
+      "#name": "name", // Map #name to the actual attribute name
+    },
     ExpressionAttributeValues: {
       ":name": name,
     },

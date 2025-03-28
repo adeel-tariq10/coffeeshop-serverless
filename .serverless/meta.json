@@ -201,7 +201,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                  "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+                  "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
                 },
                 "Handler": "index.handler",
                 "Runtime": "nodejs20.x",
@@ -233,7 +233,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                  "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+                  "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
                 },
                 "Handler": "index.handler",
                 "Runtime": "nodejs20.x",
@@ -265,7 +265,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                  "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+                  "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
                 },
                 "Handler": "index.handler",
                 "Runtime": "nodejs20.x",
@@ -297,7 +297,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                  "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+                  "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
                 },
                 "Handler": "index.handler",
                 "Runtime": "nodejs20.x",
@@ -587,7 +587,7 @@
                 "DeleteUserLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1743175501067": {
+            "ApiGatewayDeployment1743178386998": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -1235,7 +1235,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -1267,7 +1267,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -1299,7 +1299,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -1331,7 +1331,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -1621,7 +1621,7 @@
               "DeleteUserLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1743175501067": {
+          "ApiGatewayDeployment1743178386998": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1921,30 +1921,30 @@
     "serviceProviderAwsCfStackName": "coffeeshop-serverless-dev",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:164725230331:stack/coffeeshop-serverless-dev/22162110-0be4-11f0-a567-0affe8f069a7",
     "serviceProviderAwsCfStackCreated": "2025-03-28T14:51:30.203Z",
-    "serviceProviderAwsCfStackUpdated": "2025-03-28T15:22:13.870Z",
+    "serviceProviderAwsCfStackUpdated": "2025-03-28T16:05:50.780Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "DeleteUserLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-deleteUser:5",
+        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-deleteUser:7",
         "Description": "Current Lambda function version",
         "ExportName": "sls-coffeeshop-serverless-dev-DeleteUserLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "UpdateUserLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-updateUser:5",
+        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-updateUser:7",
         "Description": "Current Lambda function version",
         "ExportName": "sls-coffeeshop-serverless-dev-UpdateUserLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "CreateUserLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-createUser:5",
+        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-createUser:7",
         "Description": "Current Lambda function version",
         "ExportName": "sls-coffeeshop-serverless-dev-CreateUserLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "GetUserLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-getUser:5",
+        "OutputValue": "arn:aws:lambda:us-east-1:164725230331:function:coffeeshop-serverless-dev-getUser:7",
         "Description": "Current Lambda function version",
         "ExportName": "sls-coffeeshop-serverless-dev-GetUserLambdaFunctionQualifiedArn"
       },
@@ -2101,7 +2101,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-              "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+              "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
             },
             "Handler": "index.handler",
             "Runtime": "nodejs20.x",
@@ -2133,7 +2133,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-              "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+              "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
             },
             "Handler": "index.handler",
             "Runtime": "nodejs20.x",
@@ -2165,7 +2165,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-              "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+              "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
             },
             "Handler": "index.handler",
             "Runtime": "nodejs20.x",
@@ -2197,7 +2197,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-              "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+              "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
             },
             "Handler": "index.handler",
             "Runtime": "nodejs20.x",
@@ -2487,7 +2487,7 @@
             "DeleteUserLambdaPermissionApiGateway"
           ]
         },
-        "ApiGatewayDeployment1743175501067": {
+        "ApiGatewayDeployment1743178386998": {
           "Type": "AWS::ApiGateway::Deployment",
           "Properties": {
             "RestApiId": {

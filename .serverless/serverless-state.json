@@ -167,7 +167,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -199,7 +199,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -231,7 +231,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -263,7 +263,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -553,7 +553,7 @@
               "DeleteUserLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1743175501067": {
+          "ApiGatewayDeployment1743178386998": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1047,7 +1047,7 @@
     "layers": {}
   },
   "package": {
-    "artifactDirectoryName": "serverless/coffeeshop-serverless/dev/1743175511881-2025-03-28T15:25:11.881Z",
+    "artifactDirectoryName": "serverless/coffeeshop-serverless/dev/1743178398406-2025-03-28T16:13:18.406Z",
     "artifact": "coffeeshop-serverless.zip"
   }
 }
