@@ -1,11 +1,10 @@
-
 name: Dev & Prod Serverless Deployment
 
 on:
   push:
     branches:
       - dev
-      
+      - main
 
 jobs:
   deploy:
@@ -26,7 +25,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # Step 4: Configure AWS Credentials
+      # Step 4: Install Serverless Framework
+      - name: Install Serverless Framework
+        run: npm install -g serverless
+
+      # Step 5: Configure AWS Credentials
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
@@ -34,11 +37,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      # Step 5: Determine Deployment Stage
+      # Step 6: Determine Deployment Stage
       - name: Set Stage
         id: set-stage
         run: echo "STAGE=$(if [ '${{ github.ref_name }}' == 'main' ]; then echo prod; else echo dev; fi)" >> $GITHUB_ENV
 
-      # Step 6: Deploy to Serverless
-      - name: Deploy to Serverless (${STAGE})
+      # Step 7: Deploy to Serverless
+      - name: Deploy to Serverless
         run: serverless deploy --stage ${{ env.STAGE }}
