@@ -7,9 +7,6 @@
       "org": "azizurehmankhan",
       "app": "coffeeshop-serverless",
       "service": "coffeeshop-serverless",
-      "plugins": [
-        "serverless-offline"
-      ],
       "stages": {
         "default": {
           "params": {
@@ -178,7 +175,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                  "S3Key": "serverless/coffeeshop-serverless/dev/1743165749220-2025-03-28T12:42:29.220Z/coffeeshop-serverless.zip"
+                  "S3Key": "serverless/coffeeshop-serverless/dev/1743166710012-2025-03-28T12:58:30.012Z/coffeeshop-serverless.zip"
                 },
                 "Handler": "index.handler",
                 "Runtime": "nodejs20.x",
@@ -597,7 +594,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-                "S3Key": "serverless/coffeeshop-serverless/dev/1743165749220-2025-03-28T12:42:29.220Z/coffeeshop-serverless.zip"
+                "S3Key": "serverless/coffeeshop-serverless/dev/1743166710012-2025-03-28T12:58:30.012Z/coffeeshop-serverless.zip"
               },
               "Handler": "index.handler",
               "Runtime": "nodejs20.x",
@@ -815,7 +812,7 @@
       "serviceProvider": null,
       "instanceParameters": null
     },
-    "serviceRawFile": "\n# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: azizurehmankhan\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: coffeeshop-serverless\n# \"service\" is the name of this project. This will also be added to your AWS resource names.\nservice: coffeeshop-serverless\n\nplugins:\n  - serverless-offline\n\nstages:\n  default:\n    params:\n      tableName: \"users-table-${sls:stage}\"\n\nprovider:\n  name: aws\n  runtime: nodejs20.x\n  profile: serverless\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - dynamodb:Query\n            - dynamodb:Scan\n            - dynamodb:GetItem\n            - dynamodb:PutItem\n            - dynamodb:UpdateItem\n            - dynamodb:DeleteItem\n          Resource:\n            - Fn::GetAtt: [UsersTable, Arn]\n  environment:\n    USERS_TABLE: ${param:tableName}\n\nfunctions:\n  api:\n    handler: handler.handler\n    events:\n      - httpApi: \"*\"\n\nresources:\n  Resources:\n    UsersTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        AttributeDefinitions:\n          - AttributeName: userId\n            AttributeType: S\n        KeySchema:\n          - AttributeName: userId\n            KeyType: HASH\n        BillingMode: PAY_PER_REQUEST\n        TableName: ${param:tableName}\n",
+    "serviceRawFile": "\n# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: azizurehmankhan\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: coffeeshop-serverless\n# \"service\" is the name of this project. This will also be added to your AWS resource names.\nservice: coffeeshop-serverless\n\n\nstages:\n  default:\n    params:\n      tableName: \"users-table-${sls:stage}\"\n\nprovider:\n  name: aws\n  runtime: nodejs20.x\n  profile: serverless\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - dynamodb:Query\n            - dynamodb:Scan\n            - dynamodb:GetItem\n            - dynamodb:PutItem\n            - dynamodb:UpdateItem\n            - dynamodb:DeleteItem\n          Resource:\n            - Fn::GetAtt: [UsersTable, Arn]\n  environment:\n    USERS_TABLE: ${param:tableName}\n\nfunctions:\n  api:\n    handler: handler.handler\n    events:\n      - httpApi: \"*\"\n\nresources:\n  Resources:\n    UsersTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        AttributeDefinitions:\n          - AttributeName: userId\n            AttributeType: S\n        KeySchema:\n          - AttributeName: userId\n            KeyType: HASH\n        BillingMode: PAY_PER_REQUEST\n        TableName: ${param:tableName}\n",
     "command": [
       "dev"
     ],
@@ -828,7 +825,7 @@
     "serviceProviderAwsCfStackName": "coffeeshop-serverless-dev",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:164725230331:stack/coffeeshop-serverless-dev/6393ece0-0bcf-11f0-83a9-0e6a9d97788b",
     "serviceProviderAwsCfStackCreated": "2025-03-28T12:23:00.652Z",
-    "serviceProviderAwsCfStackUpdated": "2025-03-28T12:38:57.733Z",
+    "serviceProviderAwsCfStackUpdated": "2025-03-28T12:51:44.559Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
@@ -974,7 +971,7 @@
           "Properties": {
             "Code": {
               "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-              "S3Key": "serverless/coffeeshop-serverless/dev/1743165749220-2025-03-28T12:42:29.220Z/coffeeshop-serverless.zip"
+              "S3Key": "serverless/coffeeshop-serverless/dev/1743166710012-2025-03-28T12:58:30.012Z/coffeeshop-serverless.zip"
             },
             "Handler": "index.handler",
             "Runtime": "nodejs20.x",

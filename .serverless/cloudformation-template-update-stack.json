@@ -117,7 +117,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-          "S3Key": "serverless/coffeeshop-serverless/dev/1743165749220-2025-03-28T12:42:29.220Z/coffeeshop-serverless.zip"
+          "S3Key": "serverless/coffeeshop-serverless/dev/1743166710012-2025-03-28T12:58:30.012Z/coffeeshop-serverless.zip"
         },
         "Handler": "index.handler",
         "Runtime": "nodejs20.x",

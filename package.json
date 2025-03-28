@@ -8,8 +8,5 @@
     "dotenv": "^16.4.7",
     "express": "^4.19.2",
     "serverless-http": "^3.2.0"
-  },
-  "devDependencies": {
-    "serverless-offline": "^14.4.0"
   }
 }

@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
 
 const {
@@ -14,14 +12,6 @@ const serverless = require("serverless-http");
 const app = express();
 
 const USERS_TABLE = process.env.USERS_TABLE;
-console.log('Environment variables:', {
-  USERS_TABLE,
-  IS_OFFLINE: process.env.IS_OFFLINE,
-  AWS_REGION: process.env.AWS_REGION,
-  AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
-  AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY
-});
-
 const client = new DynamoDBClient();
 const docClient = DynamoDBDocumentClient.from(client);
 
@@ -81,4 +71,4 @@ app.use((req, res, next) => {
   });
 });
 
-exports.handler = serverless(app);
+exports.handler = serverless(app); 
