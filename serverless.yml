@@ -27,8 +27,7 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
           Resource: 
-            - Fn::GetAtt: [UsersTableDev, Arn]  # For development
-            - Fn::GetAtt: [UsersTableProd, Arn] # For production
+            - Fn::GetAtt: [UsersTable, Arn]  # Reference the single table
 
 custom:
   tablePrefix: UsersTable
@@ -64,22 +63,10 @@ functions:
 
 resources:
   Resources:
-    UsersTableDev:
+    UsersTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ${self:custom.tablePrefix}-dev
-        AttributeDefinitions:
-          - AttributeName: userId
-            AttributeType: S
-        KeySchema:
-          - AttributeName: userId
-            KeyType: HASH
-        BillingMode: PAY_PER_REQUEST
-
-    UsersTableProd:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: ${self:custom.tablePrefix}-prod
+        TableName: ${self:custom.tablePrefix}-${opt:stage, 'dev'}  # Use stage in the table name
         AttributeDefinitions:
           - AttributeName: userId
             AttributeType: S

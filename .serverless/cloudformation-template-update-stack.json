@@ -5,25 +5,25 @@
     "CreateUserLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/coffeeshop-serverless-Prod-createUser"
+        "LogGroupName": "/aws/lambda/coffeeshop-serverless-dev-createUser"
       }
     },
     "GetUserLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/coffeeshop-serverless-Prod-getUser"
+        "LogGroupName": "/aws/lambda/coffeeshop-serverless-dev-getUser"
       }
     },
     "UpdateUserLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/coffeeshop-serverless-Prod-updateUser"
+        "LogGroupName": "/aws/lambda/coffeeshop-serverless-dev-updateUser"
       }
     },
     "DeleteUserLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/coffeeshop-serverless-Prod-deleteUser"
+        "LogGroupName": "/aws/lambda/coffeeshop-serverless-dev-deleteUser"
       }
     },
     "IamRoleLambdaExecution": {
@@ -52,7 +52,7 @@
                 "-",
                 [
                   "coffeeshop-serverless",
-                  "Prod",
+                  "dev",
                   "lambda"
                 ]
               ]
@@ -69,7 +69,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/coffeeshop-serverless-Prod*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/coffeeshop-serverless-dev*:*"
                     }
                   ]
                 },
@@ -80,7 +80,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/coffeeshop-serverless-Prod*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/coffeeshop-serverless-dev*:*:*"
                     }
                   ]
                 },
@@ -95,17 +95,18 @@
                   "Resource": [
                     {
                       "Fn::GetAtt": [
-                        "UsersTableDev",
-                        "Arn"
-                      ]
-                    },
-                    {
-                      "Fn::GetAtt": [
-                        "UsersTableProd",
+                        "UsersTable",
                         "Arn"
                       ]
                     }
                   ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "iot:*"
+                  ],
+                  "Resource": "*"
                 }
               ]
             }
@@ -117,7 +118,7 @@
             "-",
             [
               "coffeeshop-serverless",
-              "Prod",
+              "dev",
               {
                 "Ref": "AWS::Region"
               },
@@ -132,16 +133,20 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-          "S3Key": "serverless/coffeeshop-serverless/Prod/1743195058544-2025-03-28T20:50:58.544Z/coffeeshop-serverless.zip"
+          "S3Key": "serverless/coffeeshop-serverless/dev/1743205712845-2025-03-28T23:48:32.845Z/coffeeshop-serverless.zip"
         },
-        "Handler": "handler.createUser",
+        "Handler": "index.handler",
         "Runtime": "nodejs20.x",
-        "FunctionName": "coffeeshop-serverless-Prod-createUser",
+        "FunctionName": "coffeeshop-serverless-dev-createUser",
         "MemorySize": 1024,
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "USERS_TABLE": "UsersTable-Prod"
+            "USERS_TABLE": "UsersTable-dev",
+            "SLS_IOT_ENDPOINT": "aybesndab82ni-ats.iot.us-east-1.amazonaws.com",
+            "SLS_SERVICE": "coffeeshop-serverless",
+            "SLS_STAGE": "dev",
+            "SLS_FUNCTION": "createUser"
           }
         },
         "Role": {
@@ -160,16 +165,20 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-          "S3Key": "serverless/coffeeshop-serverless/Prod/1743195058544-2025-03-28T20:50:58.544Z/coffeeshop-serverless.zip"
+          "S3Key": "serverless/coffeeshop-serverless/dev/1743205712845-2025-03-28T23:48:32.845Z/coffeeshop-serverless.zip"
         },
-        "Handler": "handler.getUser",
+        "Handler": "index.handler",
         "Runtime": "nodejs20.x",
-        "FunctionName": "coffeeshop-serverless-Prod-getUser",
+        "FunctionName": "coffeeshop-serverless-dev-getUser",
         "MemorySize": 1024,
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "USERS_TABLE": "UsersTable-Prod"
+            "USERS_TABLE": "UsersTable-dev",
+            "SLS_IOT_ENDPOINT": "aybesndab82ni-ats.iot.us-east-1.amazonaws.com",
+            "SLS_SERVICE": "coffeeshop-serverless",
+            "SLS_STAGE": "dev",
+            "SLS_FUNCTION": "getUser"
           }
         },
         "Role": {
@@ -188,16 +197,20 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-          "S3Key": "serverless/coffeeshop-serverless/Prod/1743195058544-2025-03-28T20:50:58.544Z/coffeeshop-serverless.zip"
+          "S3Key": "serverless/coffeeshop-serverless/dev/1743205712845-2025-03-28T23:48:32.845Z/coffeeshop-serverless.zip"
         },
-        "Handler": "handler.updateUser",
+        "Handler": "index.handler",
         "Runtime": "nodejs20.x",
-        "FunctionName": "coffeeshop-serverless-Prod-updateUser",
+        "FunctionName": "coffeeshop-serverless-dev-updateUser",
         "MemorySize": 1024,
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "USERS_TABLE": "UsersTable-Prod"
+            "USERS_TABLE": "UsersTable-dev",
+            "SLS_IOT_ENDPOINT": "aybesndab82ni-ats.iot.us-east-1.amazonaws.com",
+            "SLS_SERVICE": "coffeeshop-serverless",
+            "SLS_STAGE": "dev",
+            "SLS_FUNCTION": "updateUser"
           }
         },
         "Role": {
@@ -216,16 +229,20 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
-          "S3Key": "serverless/coffeeshop-serverless/Prod/1743195058544-2025-03-28T20:50:58.544Z/coffeeshop-serverless.zip"
+          "S3Key": "serverless/coffeeshop-serverless/dev/1743205712845-2025-03-28T23:48:32.845Z/coffeeshop-serverless.zip"
         },
-        "Handler": "handler.deleteUser",
+        "Handler": "index.handler",
         "Runtime": "nodejs20.x",
-        "FunctionName": "coffeeshop-serverless-Prod-deleteUser",
+        "FunctionName": "coffeeshop-serverless-dev-deleteUser",
         "MemorySize": 1024,
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "USERS_TABLE": "UsersTable-Prod"
+            "USERS_TABLE": "UsersTable-dev",
+            "SLS_IOT_ENDPOINT": "aybesndab82ni-ats.iot.us-east-1.amazonaws.com",
+            "SLS_SERVICE": "coffeeshop-serverless",
+            "SLS_STAGE": "dev",
+            "SLS_FUNCTION": "deleteUser"
           }
         },
         "Role": {
@@ -239,50 +256,50 @@
         "DeleteUserLogGroup"
       ]
     },
-    "CreateUserLambdaVersionJS5bAaFrkeZt9AfOrtHZ3y2eo1vfXJxuYDrpl58JA": {
+    "CreateUserLambdaVersionJzHjA4KxPd45AAElShzoUcAGssWKFFM6Ic5GCPjU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateUserLambdaFunction"
         },
-        "CodeSha256": "GOBqgYcyq0A7JIyZs2gz7tulop3Yw8s6wfdesh2U8Yw="
+        "CodeSha256": "Cqu2vZUs6jFf4l1r+0TQGPGPoSKKt5+XObzK/LVOMzc="
       }
     },
-    "GetUserLambdaVersionNxS2mVZZuBH3fKfjy3ULW8unlsT1v9ORlAc8FXR1Dw": {
+    "GetUserLambdaVersionVQjsqmkWvasZmx7bJKcCd7ztoELoQKPdG6ZHN9ydP8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetUserLambdaFunction"
         },
-        "CodeSha256": "GOBqgYcyq0A7JIyZs2gz7tulop3Yw8s6wfdesh2U8Yw="
+        "CodeSha256": "Cqu2vZUs6jFf4l1r+0TQGPGPoSKKt5+XObzK/LVOMzc="
       }
     },
-    "UpdateUserLambdaVersionmyiH0WEKNVH7pR2iW4jZxNjDzolqcY2WmiVjreA2Q": {
+    "UpdateUserLambdaVersionmi7FIHsnY6IyccUipIYQPuejGNtw7LYeExpqWS2c": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateUserLambdaFunction"
         },
-        "CodeSha256": "GOBqgYcyq0A7JIyZs2gz7tulop3Yw8s6wfdesh2U8Yw="
+        "CodeSha256": "Cqu2vZUs6jFf4l1r+0TQGPGPoSKKt5+XObzK/LVOMzc="
       }
     },
-    "DeleteUserLambdaVersionhW8Mkiu1aSbNy7WIrZgMrvi5UTxWojTIVJY4W88gM": {
+    "DeleteUserLambdaVersionIbUfEWL9lQh3wiprjnDJ9pbyzupfdwhMsAR4aQWDYl8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteUserLambdaFunction"
         },
-        "CodeSha256": "GOBqgYcyq0A7JIyZs2gz7tulop3Yw8s6wfdesh2U8Yw="
+        "CodeSha256": "Cqu2vZUs6jFf4l1r+0TQGPGPoSKKt5+XObzK/LVOMzc="
       }
     },
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "Prod-coffeeshop-serverless",
+        "Name": "dev-coffeeshop-serverless",
         "EndpointConfiguration": {
           "Types": [
             "EDGE"
@@ -502,13 +519,13 @@
         "DeleteUserLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1743195046228": {
+    "ApiGatewayDeployment1743205702828": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         },
-        "StageName": "Prod"
+        "StageName": "dev"
       },
       "DependsOn": [
         "ApiGatewayMethodUsersPost",
@@ -665,29 +682,10 @@
         }
       }
     },
-    "UsersTableDev": {
+    "UsersTable": {
       "Type": "AWS::DynamoDB::Table",
       "Properties": {
         "TableName": "UsersTable-dev",
-        "AttributeDefinitions": [
-          {
-            "AttributeName": "userId",
-            "AttributeType": "S"
-          }
-        ],
-        "KeySchema": [
-          {
-            "AttributeName": "userId",
-            "KeyType": "HASH"
-          }
-        ],
-        "BillingMode": "PAY_PER_REQUEST"
-      }
-    },
-    "UsersTableProd": {
-      "Type": "AWS::DynamoDB::Table",
-      "Properties": {
-        "TableName": "UsersTable-prod",
         "AttributeDefinitions": [
           {
             "AttributeName": "userId",
@@ -708,43 +706,43 @@
     "ServerlessDeploymentBucketName": {
       "Value": "serverless-framework-deployments-us-east-1-c9f97e09-d020",
       "Export": {
-        "Name": "sls-coffeeshop-serverless-Prod-ServerlessDeploymentBucketName"
+        "Name": "sls-coffeeshop-serverless-dev-ServerlessDeploymentBucketName"
       }
     },
     "CreateUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateUserLambdaVersionJS5bAaFrkeZt9AfOrtHZ3y2eo1vfXJxuYDrpl58JA"
+        "Ref": "CreateUserLambdaVersionJzHjA4KxPd45AAElShzoUcAGssWKFFM6Ic5GCPjU"
       },
       "Export": {
-        "Name": "sls-coffeeshop-serverless-Prod-CreateUserLambdaFunctionQualifiedArn"
+        "Name": "sls-coffeeshop-serverless-dev-CreateUserLambdaFunctionQualifiedArn"
       }
     },
     "GetUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetUserLambdaVersionNxS2mVZZuBH3fKfjy3ULW8unlsT1v9ORlAc8FXR1Dw"
+        "Ref": "GetUserLambdaVersionVQjsqmkWvasZmx7bJKcCd7ztoELoQKPdG6ZHN9ydP8"
       },
       "Export": {
-        "Name": "sls-coffeeshop-serverless-Prod-GetUserLambdaFunctionQualifiedArn"
+        "Name": "sls-coffeeshop-serverless-dev-GetUserLambdaFunctionQualifiedArn"
       }
     },
     "UpdateUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateUserLambdaVersionmyiH0WEKNVH7pR2iW4jZxNjDzolqcY2WmiVjreA2Q"
+        "Ref": "UpdateUserLambdaVersionmi7FIHsnY6IyccUipIYQPuejGNtw7LYeExpqWS2c"
       },
       "Export": {
-        "Name": "sls-coffeeshop-serverless-Prod-UpdateUserLambdaFunctionQualifiedArn"
+        "Name": "sls-coffeeshop-serverless-dev-UpdateUserLambdaFunctionQualifiedArn"
       }
     },
     "DeleteUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteUserLambdaVersionhW8Mkiu1aSbNy7WIrZgMrvi5UTxWojTIVJY4W88gM"
+        "Ref": "DeleteUserLambdaVersionIbUfEWL9lQh3wiprjnDJ9pbyzupfdwhMsAR4aQWDYl8"
       },
       "Export": {
-        "Name": "sls-coffeeshop-serverless-Prod-DeleteUserLambdaFunctionQualifiedArn"
+        "Name": "sls-coffeeshop-serverless-dev-DeleteUserLambdaFunctionQualifiedArn"
       }
     },
     "ServiceEndpoint": {
@@ -765,12 +763,12 @@
             {
               "Ref": "AWS::URLSuffix"
             },
-            "/Prod"
+            "/dev"
           ]
         ]
       },
       "Export": {
-        "Name": "sls-coffeeshop-serverless-Prod-ServiceEndpoint"
+        "Name": "sls-coffeeshop-serverless-dev-ServiceEndpoint"
       }
     }
   }
